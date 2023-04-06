@@ -75,17 +75,7 @@ class ControllerExtensionModuleLogisticsApi extends Controller {
 			$data['error_api_password'] = '';
 		}
 
-		if (isset($this->error['module_logistics_api_api_url'])) {
-			$data['error_api_url'] = $this->error['module_logistics_api_api_url'];
-		} else {
-			$data['error_api_url'] = '';
-		}
-
-		if (isset($this->error['module_logistics_api_currency_id'])) {
-			$data['error_currency_id'] = $this->error['module_logistics_api_currency_id'];
-		} else {
-			$data['error_currency_id'] = '';
-		}
+		
 
 		if (isset($this->request->post['module_logistics_api_api_username'])) {
 			$data['api_username'] = $this->request->post['module_logistics_api_api_username'];
@@ -99,52 +89,16 @@ class ControllerExtensionModuleLogisticsApi extends Controller {
 			$data['api_password'] = $this->config->get('module_logistics_api_api_password');
 		}
 
-		if (isset($this->request->post['module_logistics_api_api_url'])) {
-			$data['api_url'] = $this->request->post['module_logistics_api_api_url'];
+		if (isset($this->request->post['module_logistics_api_sandbox_status'])) {
+			$data['sandbox_status'] = $this->request->post['module_logistics_api_sandbox_status'];
 		} else {
-			$data['api_url'] = $this->config->get('module_logistics_api_api_url');
-		}
-
-		if (isset($this->request->post['module_logistics_api_laguages_links'])) {
-			$data['language_links'] = $this->request->post['module_logistics_api_laguages_links'];
-		} else {
-			$data['language_links'] = $this->config->get('module_logistics_api_laguages_links');
-		}
-
-		if (isset($this->request->post['module_logistics_api_update_category'])) {
-			$data['update_category'] = $this->request->post['module_logistics_api_update_category'];
-		} else {
-			$data['update_category'] = $this->config->get('module_logistics_api_update_category');
+			$data['sandbox_status'] = $this->config->get('module_logistics_api_sandbox_status');
 		}
 
 		if (isset($this->request->post['module_logistics_api_update_product'])) {
 			$data['update_product'] = $this->request->post['module_logistics_api_update_product'];
 		} else {
 			$data['update_product'] = $this->config->get('module_logistics_api_update_product');
-		}
-
-		if (isset($this->request->post['module_logistics_api_update_product_attributes'])) {
-			$data['update_product_attributes'] = $this->request->post['module_logistics_api_update_product_attributes'];
-		} else {
-			$data['update_product_attributes'] = $this->config->get('module_logistics_api_update_product_attributes');
-		}
-
-		if (isset($this->request->post['module_logistics_api_attributes_common_group'])) {
-			$data['attributes_common_group'] = $this->request->post['module_logistics_api_attributes_common_group'];
-		} else {
-			$data['attributes_common_group'] = $this->config->get('module_logistics_api_attributes_common_group');
-		}
-
-		if (isset($this->request->post['module_logistics_api_attributes_values_multi_language'])) {
-			$data['attributes_values_multi_language'] = $this->request->post['module_logistics_api_attributes_values_multi_language'];
-		} else {
-			$data['attributes_values_multi_language'] = $this->config->get('module_logistics_api_attributes_values_multi_language');
-		}
-
-		if (isset($this->request->post['module_logistics_api_update_special_discount'])) {
-			$data['update_special_discount'] = $this->request->post['module_logistics_api_update_special_discount'];
-		} else {
-			$data['update_special_discount'] = $this->config->get('module_logistics_api_update_special_discount');
 		}
 
 		if (isset($this->request->post['module_logistics_api_update_images'])) {
@@ -158,27 +112,11 @@ class ControllerExtensionModuleLogisticsApi extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
-		$data['shoprenter_languages'] = array(
-			0 => "empty"
-		);
-
-		if($data['api_username'] && $data['api_password']){
-			$shoprenter_data = $this->getShoprenterLanguages();
-			if($shoprenter_data){
-				$data['shoprenter_languages'] = $shoprenter_data;
-			}
-		}
-
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('extension/module/logistics_api', $data));
-	}
-
-	public function getShoprenterLanguages(){
-		$this->load->model('tool/logistics_api');
-		return $this->model_tool_logistics_api->getShoprenterLanguages();
 	}
 
 	protected function validate() {

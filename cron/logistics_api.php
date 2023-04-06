@@ -138,10 +138,10 @@ if ($config->has('action_event')) {
 // Error Handler
 set_error_handler('error_handler');
 
-log1("Shoprenter Cron Job Started");
-putenv("SERVER_NAME=localhost"); // это чтобы почта работала
+log1("XXL Logistics Cron Job Started");
+putenv("SERVER_NAME=localhost"); 
 $loader->model('tool/logistics_api');
 
 $registry->get("model_tool_logistics_api")->mainExport();
-log1("Shoprenter Cron Job Finished");
+log1("XXL Logistics Cron Job Finished");
 

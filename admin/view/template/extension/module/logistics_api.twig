@@ -53,7 +53,6 @@
 							</select>
 						</div>
 					</div>
-
 					<div class="form-group required">
 						<label class="col-sm-2 control-label" for="input-id-clients">{{ entry_api_username }}</label>
 						<div class="col-sm-10">
@@ -72,21 +71,11 @@
 							{% endif %}
 						</div>
 					</div>
-					<div class="form-group required">
-						<label class="col-sm-2 control-label" for="input-currency-value">{{ entry_api_url }}</label>
-						<div class="col-sm-10">
-							<input type="text" name="module_logistics_api_api_url" value="{{ api_url }}" placeholder="{{ entry_api_url }}" id="input-currency-value" class="form-control" />
-							{% if error_api_url %}
-								<div class="text-danger">{{ error_api_url }}</div>
-							{% endif %}
-						</div>
-					</div>
-
 					<div class="form-group">
-						<label class="col-sm-2 control-label" for="input-update-category">{{ entry_update_category }}</label>
+						<label class="col-sm-2 control-label" for="input-sandbox-status">{{ entry_sandbox_status }}</label>
 						<div class="col-sm-10">
-							<select name="module_logistics_api_update_category" id="input-update-category" class="form-control">
-								{% if update_category %}
+							<select name="module_logistics_api_sandbox_status" id="input-sandbox-status" class="form-control">
+								{% if sandbox_status %}
 									<option value="1" selected="selected">{{ text_enabled }}</option>
 									<option value="0">{{ text_disabled }}</option>
 								{% else %}
@@ -111,63 +100,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label" for="input-update-product-attributes">{{ entry_update_product_attributes }}</label>
-						<div class="col-sm-10">
-							<select name="module_logistics_api_update_product_attributes" id="input-update-product-attributes" class="form-control">
-								{% if update_product_attributes %}
-									<option value="1" selected="selected">{{ text_enabled }}</option>
-									<option value="0">{{ text_disabled }}</option>
-								{% else %}
-									<option value="1">{{ text_enabled }}</option>
-									<option value="0" selected="selected">{{ text_disabled }}</option>
-								{% endif %}
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="input-attributes-common-group">{{ entry_attributes_common_group }}</label>
-						<div class="col-sm-10">
-							<select name="module_logistics_api_attributes_common_group" id="input-attributes-common-group" class="form-control">
-								{% if attributes_common_group %}
-									<option value="1" selected="selected">{{ text_enabled }}</option>
-									<option value="0">{{ text_disabled }}</option>
-								{% else %}
-									<option value="1">{{ text_enabled }}</option>
-									<option value="0" selected="selected">{{ text_disabled }}</option>
-								{% endif %}
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="input-attributes-values-multi-language">{{ entry_attributes_values_multi_language }}</label>
-						<div class="col-sm-10">
-							<select name="module_logistics_api_attributes_values_multi_language" id="input-attributes-values-multi-language" class="form-control">
-								{% if attributes_values_multi_language %}
-									<option value="1" selected="selected">{{ text_enabled }}</option>
-									<option value="0">{{ text_disabled }}</option>
-								{% else %}
-									<option value="1">{{ text_enabled }}</option>
-									<option value="0" selected="selected">{{ text_disabled }}</option>
-								{% endif %}
-							</select>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="input-update-special-discount">{{ entry_update_special_discount }}</label>
-						<div class="col-sm-10">
-							<select name="module_logistics_api_update_special_discount" id="input-update-special-discount" class="form-control">
-								{% if update_special_discount %}
-									<option value="1" selected="selected">{{ text_enabled }}</option>
-									<option value="0">{{ text_disabled }}</option>
-								{% else %}
-									<option value="1">{{ text_enabled }}</option>
-									<option value="0" selected="selected">{{ text_disabled }}</option>
-								{% endif %}
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
 						<label class="col-sm-2 control-label" for="input-update-images">{{ entry_update_images }}</label>
 						<div class="col-sm-10">
 							<select name="module_logistics_api_update_images" id="input-update-images" class="form-control">
@@ -181,34 +113,6 @@
 							</select>
 						</div>
 					</div>
-
-
-
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="input-language-links">{{ entry_language_links }}</label>
-						<div class="col-sm-10">
-							{% for code, language in languages %}
-								<div class="row" id="input-language-links">
-									<div class="col-sm-1">
-										<span>{{ language.name }}</span>
-									</div>
-									<div class="col-sm-11">
-										<select name="module_logistics_api_laguages_links[{{ language.language_id }}]" class="form-control">
-											{% for shop_lang_id, shop_lang_name in shoprenter_languages %}
-												{% if language_links[language.language_id] == shop_lang_id %}
-													<option value="{{ shop_lang_id }}" selected="selected">{{ shop_lang_name }}</option>
-												{% else %}
-													<option value="{{ shop_lang_id }}">{{ shop_lang_name }}</option>
-												{% endif %}
-											{% endfor %}
-										</select>
-									</div>
-								</div>
-								<br>
-							{% endfor %}
-						</div>
-					</div>
-
 				</form>
 
 				<div class="form-group" style="display: inline-block; width: 100%;">
